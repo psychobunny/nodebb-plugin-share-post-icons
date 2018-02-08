@@ -1,0 +1,11 @@
+{
+	"id": "nodebb-plugin-share-post-icons",
+	"url": "https://github.com/NodeBB/nodebb-plugin-share-post-icons",
+	"scripts": [
+		"static/lib/main.js"
+	],
+	"less": [
+		"static/style.less"
+	],
+	"templates": "static/templates"
+}
