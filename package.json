@@ -1,13 +1,21 @@
 {
   "name": "nodebb-plugin-share-post-icons",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Displays social sharing icons beneath every post in a topic",
   "main": "library.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/psychobunny/nodebb-plugin-share-post-icons"
   },
-  "keywords": ["nodebb", "plugin", "social", "icons", "share", "facebook", "gplus", "twitter"
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "social",
+    "icons",
+    "share",
+    "facebook",
+    "gplus",
+    "twitter"
   ],
   "author": {
     "name": "psychobunny",
