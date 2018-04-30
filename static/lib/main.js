@@ -32,6 +32,10 @@ $(document).ready(function () {
 		var posts = pid ? '[component="post"][data-pid="' + pid + '"]' : '[component="post"]';
 		$(posts).each(function () {
 			var post = $(this);
+			if (post.find('.nodebb-plugin-share-post-icons').length) {
+				return;
+			}
+
 			app.parseAndTranslate('partials/nodebb-plugin-share-post-icons/share', {}, function (tpl) {
 				$(tpl).insertBefore(post.find('.post-tools'));
 			});
