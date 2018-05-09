@@ -9,15 +9,6 @@ $(document).ready(function () {
 		if (ajaxify.data.template.topic) {
 			insertSocialIcons();
 
-			$(window).on('action:posts.loaded', function (ev, data) {
-				for (var i in data.posts) {
-					if (data.posts.hasOwnProperty(i)) {
-						var pid = data.posts[i].pid;
-						insertSocialIcons(pid);
-					}
-				}
-			});
-
 			$('#content').off('click', '[component="share/linkedin"]').on('click', '[component="share/linkedin"]', function (ev) {
 				var pid = $(this).parents('[data-pid]').attr('data-pid');
 				var urlToPost = encodeURIComponent(url + '/post' + (pid ? '/' + (pid) : ''));
@@ -28,17 +19,19 @@ $(document).ready(function () {
 		}
 	});
 
-	function insertSocialIcons(pid) {
-		var posts = pid ? '[component="post"][data-pid="' + pid + '"]' : '[component="post"]';
-		$(posts).each(function () {
-			var post = $(this);
-			if (post.find('.nodebb-plugin-share-post-icons').length) {
-				return;
-			}
+	function insertSocialIcons() {
+		var post = $('[component="post"][data-index="0"]');
+		if (post.find('.nodebb-plugin-share-post-icons').length) {
+			return;
+		}
 
-			app.parseAndTranslate('partials/nodebb-plugin-share-post-icons/share', {}, function (tpl) {
-				$(tpl).insertBefore(post.find('.post-tools'));
-			});
+		app.parseAndTranslate('partials/nodebb-plugin-share-post-icons/share', {}, function (tpl) {
+			$(tpl).insertBefore(post.find('.post-tools'));
+		});
+
+		app.parseAndTranslate('partials/nodebb-plugin-share-post-icons/share', {}, function (tpl) {
+			var html = $('<span class="share-icons-post-bar"></span>').append($(tpl));
+			$(html).insertAfter($('.topic > .post-bar .topic-main-buttons'));
 		});
 	}
 });
