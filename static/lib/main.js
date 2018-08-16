@@ -21,7 +21,7 @@ $(document).ready(function () {
 			$('#content').off('click', '[component="share/mail"]').on('click', '[component="share/mail"]', function (ev) {
 				var pid = $(this).parents('[data-pid]').attr('data-pid');
 				var urlToPost = encodeURIComponent(url + '/post' + (pid ? '/' + (pid) : ''));
-				window.location.href = 'mailto:?body=' + urlToPost;
+				window.location.href = 'mailto:?body=' + urlToPost + '&subject=' + ajaxify.data.title;
 				return false;
 			});
 		}
