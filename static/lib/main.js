@@ -25,6 +25,14 @@ $(document).ready(function () {
 				window.open(shareURL, '_blank', 'width=550,height=550,scrollbars=no,status=no');
 				return false;
 			});
+			
+			
+			$('#content').off('click', '[component="share/mail"]').on('click', '[component="share/mail"]', function (ev) {
+				var pid = $(this).parents('[data-pid]').attr('data-pid');
+				var urlToPost = encodeURIComponent(url + '/post' + (pid ? '/' + (pid) : ''));
+				window.location.href = 'mailto:?body=' + urlToPost;
+				return false;
+			});
 		}
 	});
 
